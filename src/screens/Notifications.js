@@ -21,7 +21,7 @@ function Notifications1() {
           }
         });
     return (
-      <View style={{ flex: 1, justifyContent: 'up', alignItems: 'center' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{fontSize: 30}}>Allow for Notifcations for the Application to Receive Notifications</Text>
       </View>
     );

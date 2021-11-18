@@ -22,7 +22,7 @@ URL += branch;
     );
 
       const json = await response.json();
-      setData(json.data.counts);
+      setData(json.data.orders);
     } catch (error) {
       console.error(error);
     } finally {
@@ -36,16 +36,21 @@ URL += branch;
   var q = 0;
   var sign = "";
   var data1 = data;
+  const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var d = new Date();
+  var cmonth = months[d.getMonth()];
+  var cDay = d.getDate();
+  var cyear = d.getFullYear()
+  var q = 0;
+  var sign = "";
+  var data1 = data;
   for (let i = 0; i < data1.length; i++) {
-    if (data1[i].name == "# Pending Pickup"){
-      q = data1[i].change;
-      if (data[i].change_direction == "up"){
-          sign = "+ ";
-      }
-      else {
-          sign = "- ";
-      }
+    if (data1[i].status == "pending_pickup" && data1[i].month == cmonth && data1[i].day == cDay && data1[i].year == cyear){
+      q += 1;
     }
+  }
+  if (q > 0){
+    sign = "+ ";
   }
   return sign + q;
 }
