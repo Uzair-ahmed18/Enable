@@ -43,14 +43,13 @@ const BottonTabs = ({ navigation, route }) => {
         }}
       />
       <Tab.Screen
-        name="Notifications"
+        name="Settings"
         component={Notifications1}
         options={{
-          tabBarLabel: 'Notifications',
+          tabBarLabel: 'Settings',
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
-          ),
-          tabBarBadge: 3,
+            <Icon name="settings" color={color} size={size} />
+          )
         }}
       />
       <Tab.Screen
