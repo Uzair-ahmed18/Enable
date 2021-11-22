@@ -54,6 +54,8 @@ var URL = 'https://test-saas.e-butler.com/backend/staging/user';
         }
   }
   if (emailExists == true && b != ""){
+    setEmail("");
+    setPassword("");
     return navigation.navigate('BottonTabs', {
       paramKey: a,
     });

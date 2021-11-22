@@ -8,7 +8,7 @@ import { Checkbox } from 'react-native-paper';
 import Button from '../components/button';
 Notifications.setNotificationHandler({handleNotification: async () => ({ shouldShowAlert: true, shouldPlaySound: false, shouldSetBadge: false, })});
 async function registerForPushNotificationsAsync() { let token; if (Constants.isDevice) { const { status: existingStatus } = await Notifications.getPermissionsAsync(); let finalStatus = existingStatus; if (existingStatus !== 'granted') { const { status } = await Notifications.requestPermissionsAsync(); finalStatus = status; } token = (await Notifications.getExpoPushTokenAsync()).data; } else { console.log('Must use physical device for Push Notifications'); } if (Platform.OS === 'android') { Notifications.setNotificationChannelAsync('default', { name: 'default', importance: Notifications.AndroidImportance.MAX, vibrationPattern: [0, 250, 250, 250], lightColor: '#FF231F7C', }); } return token; }
-function Notifications1() {
+const Notifications1 = ({navigation}) => {
   const [checked, setChecked] = React.useState(false);
   const [checked2, setChecked2] = React.useState(false);
   const [checked3, setChecked3] = React.useState(false);
@@ -27,58 +27,72 @@ function Notifications1() {
           }
         });
     return (
-      <View style={{flex:1, paddingTop:50}}>
-    <View style={{justifyContent:'space-between',alignItems:'center', flexDirection:'row', paddingHorizontal:20}}>      
+      <View style={{flex:1, paddingTop:30}}>
+    <View style={{justifyContent:'center',alignItems:'center', flexDirection:'row', paddingHorizontal:10, marginBottom:20}}> 
+    <Text style={{fontSize:25, color:'blue', fontWeight:'bold'}} >{'Select Notification Preference'} </Text>       
 
     </View>
     <View style={styles.check}>
-       <Text style={{fontSize:16, color:'Blue'}} >{'Cancelled Order Increased '} </Text>
-      <Checkbox
+    <Checkbox
       status={checked ? 'checked' : 'unchecked'}
+      
       onPress={() => {
       setChecked(!checked);
       }}
     />
+       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Cancelled Orders Increase/Decrease '} </Text>
  
     </View>
 
     <View style={styles.check}>
-       <Text style={{fontSize:16, color:'Blue'}} >{'Pending Order Increased '} </Text>
-      <Checkbox
+    <Checkbox
+      status={checked2 ? 'checked' : 'unchecked'}
+       
       onPress={() => {
-      setChecked(!checked);
+      setChecked2(!checked2);
       }}
     />
+       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Pending Orders Increase/Decrease'} </Text>
  
     </View>
         <View style={styles.check}>
-       <Text style={{fontSize:16, color:'Blue'}} >{'Pending Pickup Increased '} </Text>
-      <Checkbox
+        <Checkbox
+      status={checked3 ? 'checked' : 'unchecked'}
+
       onPress={() => {
-      setChecked(!checked);
+      setChecked3(!checked3);
       }}
     />
+       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Pending Pickups Increase/Decrease'} </Text>
  
     </View>
+    
         <View style={styles.check}>
-       <Text style={{fontSize:16, color:'Blue'}} >{'Total Orders Decreased '} </Text>
-      <Checkbox
+        <Checkbox
+      status={checked4 ? 'checked' : 'unchecked'}
+
       onPress={() => {
-      setChecked(!checked);
+      setChecked4(!checked4);
       }}
     />
+       <Text style={{fontSize:16, color:'Blue',fontWeight:'bold'}} >{'Total Orders Increase/Decrease '} </Text>
  
     </View>
+    
         <View style={styles.check}>
-       <Text style={{fontSize:16, color:'Blue'}} >{'Preparing Orders Increased'} </Text>
-      <Checkbox
+        <Checkbox
+      status={checked5 ? 'checked' : 'unchecked'}
+
       onPress={() => {
-      setChecked(!checked);
+      setChecked5(!checked5);
       }}
     />
+       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Preparing Orders Increase/Decrease'} </Text>
+ 
     </View>
+
     <View style={styles.btnView}>
-        <Button  style={styles.materialButtonViolet} title={'Logout'}/>
+        <Button  style={styles.materialButtonViolet} title={'Logout'} onButtonPress={()=>navigation.navigate('LoginScreen')}/>
       </View>
     </View>
 
@@ -88,7 +102,7 @@ function Notifications1() {
 export default Notifications1;
 
 const styles =  StyleSheet.create({
-  check:{ paddingLeft:50, flexDirection:'row', justifyContent:'space-around',  paddingTop:20, alignItems:'center', },
+  check:{ paddingLeft:20, flexDirection:'row', justifyContent:'flex-start',  paddingTop:20, alignItems:'center', },
   btnView:{
     padding:100
   },
