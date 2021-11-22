@@ -40,7 +40,7 @@ const Notifications1 = ({navigation}) => {
       setChecked(!checked);
       }}
     />
-       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Cancelled Orders Increase/Decrease '} </Text>
+       <Text style={{fontSize:16, color:'black', fontWeight:'bold'}} >{'Cancelled Orders Increase/Decrease '} </Text>
  
     </View>
 
@@ -52,7 +52,7 @@ const Notifications1 = ({navigation}) => {
       setChecked2(!checked2);
       }}
     />
-       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Pending Orders Increase/Decrease'} </Text>
+       <Text style={{fontSize:16,color:'black',  fontWeight:'bold'}} >{'Pending Orders Increase/Decrease'} </Text>
  
     </View>
         <View style={styles.check}>
@@ -63,7 +63,7 @@ const Notifications1 = ({navigation}) => {
       setChecked3(!checked3);
       }}
     />
-       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Pending Pickups Increase/Decrease'} </Text>
+       <Text style={{fontSize:16,color:'black',  fontWeight:'bold'}} >{'Pending Pickups Increase/Decrease'} </Text>
  
     </View>
     
@@ -75,7 +75,7 @@ const Notifications1 = ({navigation}) => {
       setChecked4(!checked4);
       }}
     />
-       <Text style={{fontSize:16, color:'Blue',fontWeight:'bold'}} >{'Total Orders Increase/Decrease '} </Text>
+       <Text style={{fontSize:16, color:'black',fontWeight:'bold'}} >{'Total Orders Increase/Decrease '} </Text>
  
     </View>
     
@@ -87,7 +87,7 @@ const Notifications1 = ({navigation}) => {
       setChecked5(!checked5);
       }}
     />
-       <Text style={{fontSize:16, color:'Blue', fontWeight:'bold'}} >{'Preparing Orders Increase/Decrease'} </Text>
+       <Text style={{fontSize:16, color:'black', fontWeight:'bold'}} >{'Preparing Orders Increase/Decrease'} </Text>
  
     </View>
 

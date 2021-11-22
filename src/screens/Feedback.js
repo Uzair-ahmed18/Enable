@@ -23,29 +23,47 @@ const Feedback = () => {
   
 const requestOptions = {
   method: 'POST',
-  headers: myheader,
+  headers: {myheader, Accept: 'application/json',
+  'Content-Type': 'application/json'},
+  body: JSON.stringify({
+    category: 'yourValue',
+    title: 'yourOtherValue',
+    details: "this one"
+  }),
   redirect: 'follow'
 };
 
 var URL = 'https://test-saas.e-butler.com/backend/staging/admin/feedback';
 
 
-  const checkLogin = (a , b) => {
+  const checkLogin = (a , b, c) => {
     var emailExists = false;
     var passwordExists = false;
     if (Details == "" || Title == "" || value == null){
       return alert ("Error: One or More Fields are Empty")
     }
+  if (emailExists == false){
     setDetails("");
     setTitle("");
     setValue(null);
-  if (emailExists == false){
-
+    const requestOptions = {
+      method: 'POST',
+      headers: {myheader, Accept: 'application/json',
+      'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        category: c,
+        title: a,
+        details: b
+      }),
+      redirect: 'follow'
+    };
+    
+    fetch("https://test-saas.e-butler.com/backend/staging/admin/feedback", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
     return alert("Successfully Submitted"), console.log(value,Title,Details);
   }
-    else{
-      return null;
-    }
   }
   return (
     <KeyboardAvoidingWrapper>
@@ -78,7 +96,7 @@ var URL = 'https://test-saas.e-butler.com/backend/staging/admin/feedback';
           label={'Provide Details Here'}
         />
       <View style={styles.btnView}>
-        <Button  style={styles.materialButtonViolet} title={'Submit'} onButtonPress={()=>checkLogin(Title,Details)}  />
+        <Button  style={styles.materialButtonViolet} title={'Submit'} onButtonPress={()=>checkLogin(Title,Details,value)}  />
       </View>
       </View>
     </View>
